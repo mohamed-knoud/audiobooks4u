@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
+app.set('views', './views');
+
 // Create a route to fetch data and render HTML
 app.post('/submit', async (req, res) => {
   const query = req.body.query;
