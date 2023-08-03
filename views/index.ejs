@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librivox Audiobooks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="/"><h1>Audiobooks4u</h1></a>
+  
+  <ul>
+    <% audiobooks.forEach(audiobook => { %>
+      <li>
+        <!-- <%= audiobook %> -->
+        <h3><%= audiobook.title %></h3>
+        <p><%= audiobook.description %></p>
+        <p>Authors: 
+            <% if (typeof audiobook.authors[0] === 'object' && audiobook.authors[0] !== null) { %>
+            <%= audiobook.authors[0].first_name + " " + audiobook.authors[0].last_name %></p>
+            <% } %>
+        <a href="<%= audiobook.url_text_source %>">Ebook</a>
+        <p>Total time: <%= audiobook.totaltime %></p>
+        <p>Language: <%= audiobook.language %></p>
+        <p><a href="/audio?link=<%= audiobook.url_rss %>">Get Audio tracks</a> </p>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
