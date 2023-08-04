@@ -3,16 +3,14 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const xml2js = require('xml2js');
-// const parser = new DOMParser();
+const path = require('path');
 const bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
-
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 
 // Create a route to fetch data and render HTML
 app.post('/submit', async (req, res) => {
