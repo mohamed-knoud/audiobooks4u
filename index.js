@@ -35,7 +35,7 @@ app.post('/submit', async (req, res) => {
 });
 
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
   res.render('search');
 });
 
